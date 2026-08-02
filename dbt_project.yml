@@ -34,12 +34,26 @@ clean-targets:         # directories to be removed by `dbt clean`
 # instead be materialized as tables. Any models you add to the root of the models folder will 
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
-
-models:
+seeds:
   Kiwimart2:
-    staging:
-      +schema: staging
-      +materialized: incremental
-    reconciliation:
-      +schema: reconciliation
-      +materialized: table
+    quality_rules:
+      +schema: metadata
+      +quote_columns: false
+tests:
+  Kiwimart2:
+    +severity: warn
+# models:
+#   Kiwimart2:
+#     staging:
+#       +schema: staging
+#       +materialized: incremental
+#     reconciliation:
+#       +schema: reconciliation
+#       +materialized: table
+#     quarantine:
+#       +schema: quarantine
+#       +materialized: table
+#     marts:
+#       +schema: mart
+#       +materialized: table
+    

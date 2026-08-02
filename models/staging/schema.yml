@@ -1,9 +1,9 @@
 version: 2
 models:
-  - name: stg_customers
-  - name: stg_products
-  - name: stg_stores
-  - name: stg_inventory
+  # - name: stg_customers
+  # - name: stg_products
+  # - name: stg_stores
+  # - name: stg_inventory
   - name: stg_orders
     description: |
       Standardized staging model for customer orders.
@@ -70,8 +70,8 @@ models:
           - accepted_values:
               arguments:
                 values: ['Completed']
-              config:
-                severity: warn
+              # config:
+              #   severity: warn
 
       - name: row_hash
         description: |
@@ -81,4 +81,4 @@ models:
           - Change detection
           - Reconciliation
           - Incremental loading
-  - name: stg_order_items
+  # - name: stg_order_items

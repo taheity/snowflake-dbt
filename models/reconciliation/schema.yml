@@ -1,4 +1,4 @@
-version: 2
-models:
-  - name: reconciliation_stg_order_items
-  - name: reconciliation_stg_orders
+# version: 2
+# models:
+#   - name: reconciliation_stg_order_items
+#   - name: reconciliation_stg_orders
