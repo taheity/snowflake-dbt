@@ -7,14 +7,14 @@ models:
     columns:
       - name: customer_key
         description: "Warehouse surrogate key"
-        data_tests:
+        tests:
           - unique
               # config
               #   severity: warn
           - not_null
       - name: customer_id
         description: "Business key from source customer system"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: customer_segment
@@ -26,12 +26,12 @@ models:
     columns:
       - name: product_key
         description: "Warehouse surrogate key"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: product_id
         description: "Source product identifier"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: category
@@ -44,12 +44,12 @@ models:
     columns:
       - name: store_key
         description: "Warehouse surrogate key"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: store_id
         description: "Source store identifier"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: region
