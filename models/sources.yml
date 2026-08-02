@@ -1,0 +1,14 @@
+version: 2
+sources:
+  - name: raw
+    database: KIWIMART2_DB
+    schema: RAW
+    tables:
+    - name: customers
+    - name: products
+    - name: stores
+    - name: inventory
+    - name: orders
+    - name: order_items
+    - name: orders_stream
+    - name: order_items_stream

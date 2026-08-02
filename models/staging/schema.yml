@@ -1,0 +1,84 @@
+version: 2
+models:
+  - name: stg_customers
+  - name: stg_products
+  - name: stg_stores
+  - name: stg_inventory
+  - name: stg_orders
+    description: |
+      Standardized staging model for customer orders.
+
+      This model ingests raw order records from the ERP system,
+      performs data cleansing and normalization, standardizes
+      data types, removes duplicate records, and calculates a
+      row-level hash for change detection.
+
+      Business Rules:
+      - One record per Order ID
+      - Excludes records with null Order IDs
+      - Standardizes order status values
+      - Generates row_hash for reconciliation
+
+    config:
+      materialized: incremental
+
+    columns:
+      - name: order_id
+        description: |
+          Unique business identifier for an order.
+
+          Source:
+            ERP.OrderHeader.OrderID
+
+          Business Rules:
+          - Must be unique
+          - Cannot be NULL
+
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: |
+          Unique identifier of the customer who placed the order.
+
+          Foreign Key:
+            dim_customer.customer_id
+
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_id
+
+      - name: order_date
+        description: |
+          Date and time the order was created in the source system.
+
+      - name: order_status
+        description: |
+          Current lifecycle status of the order.
+
+          Allowed Values:
+          - NEW
+          - PROCESSING
+          - SHIPPED
+          - CANCELLED
+
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Completed']
+              config:
+                severity: warn
+
+      - name: row_hash
+        description: |
+          SHA-based hash calculated from the business attributes.
+
+          Used for:
+          - Change detection
+          - Reconciliation
+          - Incremental loading
+  - name: stg_order_items
