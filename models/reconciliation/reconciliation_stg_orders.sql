@@ -10,7 +10,7 @@ SELECT
     CURRENT_TIMESTAMP() AS detected_at
 FROM {{ source('raw', 'orders') }} r
 INNER JOIN {{ ref('stg_orders') }} s
-    ON r.order_id = s.order_id
+ON r.order_id = s.order_id
 WHERE r.order_id IS NOT NULL
   AND HASH(
         r.order_id, r.customer_id, r.order_date, r.store_id,
