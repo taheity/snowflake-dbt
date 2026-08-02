@@ -12,7 +12,7 @@ SELECT
     c.signup_date,
     c.customer_segment,
     c.status,
-    cq.is_quarantined,
+    COALESCE(cq.is_quarantined, FALSE) AS is_quarantined,
     qi.issue_summary AS data_quality_issue,
     CURRENT_TIMESTAMP() AS created_at
 
