@@ -42,18 +42,17 @@ seeds:
 tests:
   Kiwimart2:
     +severity: warn
-# models:
-#   Kiwimart2:
-#     staging:
-#       +schema: staging
-#       +materialized: incremental
-#     reconciliation:
-#       +schema: reconciliation
-#       +materialized: table
-#     quarantine:
-#       +schema: quarantine
-#       +materialized: table
-#     marts:
-#       +schema: mart
-#       +materialized: table
+models:
+  Kiwimart2:
+    staging:
+      +schema: staging
+      +materialized: incremental
+    intermediate:
+      +schema: intermediate
+    reconciliation:
+      +schema: reconciliation
+      +materialized: table
+    marts:
+      +schema: mart
+      +materialized: table
     

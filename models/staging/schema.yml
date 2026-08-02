@@ -1,9 +1,9 @@
 version: 2
 models:
-  # - name: stg_customers
-  # - name: stg_products
-  # - name: stg_stores
-  # - name: stg_inventory
+  - name: stg_customers
+  - name: stg_products
+  - name: stg_stores
+  - name: stg_inventory
   - name: stg_orders
     description: |
       Standardized staging model for customer orders.
@@ -81,4 +81,4 @@ models:
           - Change detection
           - Reconciliation
           - Incremental loading
-  # - name: stg_order_items
+  - name: stg_order_items

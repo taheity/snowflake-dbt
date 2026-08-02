@@ -19,38 +19,38 @@ models:
           - not_null
       - name: customer_segment
         description: "Customer classification"
-  # - name: dim_product
-  #   description: >
-  #     Product dimension containing product attributes
-  #     used for sales and profitability analysis.
-  #   columns:
-  #     - name: product_key
-  #       description: "Warehouse surrogate key"
-  #       data_tests:
-  #         - unique
-  #         - not_null
-  #     - name: product_id
-  #       description: "Source product identifier"
-  #       data_tests:
-  #         - unique
-  #         - not_null
-  #     - name: category
-  #       description: "Product category"
+  - name: dim_product
+    description: >
+      Product dimension containing product attributes
+      used for sales and profitability analysis.
+    columns:
+      - name: product_key
+        description: "Warehouse surrogate key"
+        data_tests:
+          - unique
+          - not_null
+      - name: product_id
+        description: "Source product identifier"
+        data_tests:
+          - unique
+          - not_null
+      - name: category
+        description: "Product category"
 
-  # - name: dim_store
-  #   description: >
-  #     Store dimension containing store attributes
-  #     used for sales and operational reporting.
-  #   columns:
-  #     - name: store_key
-  #       description: "Warehouse surrogate key"
-  #       data_tests:
-  #         - unique
-  #         - not_null
-  #     - name: store_id
-  #       description: "Source store identifier"
-  #       data_tests:
-  #         - unique
-  #         - not_null
-  #     - name: region
-  #       description: "Geographical sales region"
+  - name: dim_store
+    description: >
+      Store dimension containing store attributes
+      used for sales and operational reporting.
+    columns:
+      - name: store_key
+        description: "Warehouse surrogate key"
+        data_tests:
+          - unique
+          - not_null
+      - name: store_id
+        description: "Source store identifier"
+        data_tests:
+          - unique
+          - not_null
+      - name: region
+        description: "Geographical sales region"

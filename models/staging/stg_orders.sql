@@ -1,4 +1,4 @@
-{{ config(materialized='incremental',unique_key='order_id') }}
+{{ config(materialized='incremental', unique_key='order_id') }}
 
 SELECT
     order_id,
@@ -14,7 +14,12 @@ SELECT
         sales_channel, payment_method, order_status
     ) AS row_hash
 
-FROM {{ source('raw', 'orders_stream') }}   -- the Stream, not the base table
+{% if is_incremental() %}
+FROM {{ source('raw', 'orders_stream') }}
+{% else %}
+FROM {{ source('raw', 'orders') }}
+{% endif %}
+
 WHERE order_id IS NOT NULL
 
 QUALIFY ROW_NUMBER() OVER (
